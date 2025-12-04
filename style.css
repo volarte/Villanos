@@ -57,7 +57,7 @@ body {
 /* --- HERO SECTION & ANIMACIONES --- */
 .hero-section {
     padding: 80px 20px 50px;
-    min-height: 450px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -243,7 +243,6 @@ body {
 footer {
     padding: 40px 20px;
     background: linear-gradient(to top, rgba(255,255,255,0.5), transparent);
-    margin-top: 40px;
 }
 
 .logo-footer {
