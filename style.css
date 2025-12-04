@@ -1,0 +1,286 @@
+:root {
+    /* Colores (Mantenemos los mismos) */
+    --bg-gradient-start: #ede6ff;
+    --bg-gradient-end: #dcd0ff;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --accent-color: #9c7fc1; 
+    --accent-dark: #6a4c93;
+    --text-color: #1a1a1a;
+    
+    /* --- FUENTES DE SISTEMA (Carga Instantánea) --- */
+    
+    /* Para Títulos: Una pila de fuentes Serif elegantes */
+    --font-story: "Georgia", "Times New Roman", Times, serif; 
+    
+    /* Para Texto: La fuente nativa de cada sistema (San Francisco en Mac, Segoe en Windows, Roboto en Android) */
+    --font-clean: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at 50% 0%, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-color);
+    font-family: var(--font-clean);
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- TIPOGRAFÍA MEJORADA (Sin descargas) --- */
+.title-serif {
+    font-family: var(--font-story);
+    font-size: 3.5rem;
+    font-weight: 700;       /* Negrita para impacto */
+    margin-bottom: 0;
+    line-height: 1.1;
+    color: #1a1a1a;
+    letter-spacing: -1px;   /* Un poco más juntas para que se vea compacto y clásico */
+    text-shadow: 2px 2px 0px rgba(156, 127, 193, 0.2);
+}
+
+.subtitle-sans {
+    font-family: var(--font-clean);
+    font-weight: 800;       /* Extra bold */
+    font-size: 1.4rem;
+    letter-spacing: 3px;    /* Mucho espacio entre letras da elegancia moderna */
+    color: var(--accent-dark);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tracking-wider {
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+/* --- HERO SECTION & ANIMACIONES --- */
+.hero-section {
+    padding: 80px 20px 50px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para que las decos no rompan el ancho */
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(var(--rot)); }
+    50% { transform: translateY(-15px) rotate(var(--rot)); }
+    100% { transform: translateY(0px) rotate(var(--rot)); }
+}
+
+.deco-img {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.85;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Asignamos rotaciones iniciales para la animación */
+.top-left { top: 20px; left: -10px; width: 130px; --rot: -15deg; animation-delay: 0s; }
+.top-right { top: 40px; right: -10px; width: 150px; --rot: 10deg; animation-delay: 1s; }
+.bottom-left { bottom: -20px; left: -20px; width: 140px; --rot: 5deg; animation-delay: 2s; }
+.bottom-right { bottom: 10px; right: -20px; width: 120px; --rot: -5deg; animation-delay: 3s; }
+
+/* Información del evento destacada */
+.event-info {
+    /* --- Estilos de Vidrio (Glassmorphism) --- */
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 15px 40px; /* Un poco más ancho */
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+    /* --- Estilos de Texto (Igual al Subtítulo) --- */
+    font-family: var(--font-clean);
+    color: black; /* El mismo violeta oscuro */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px;       /* Un poco de aire entre letras */
+}
+
+/* Forzamos el color y grosor en los elementos internos */
+.event-info span, 
+.event-info p,
+.event-info div {
+    color: black;
+    font-weight: 700; /* Negrita fuerte */
+}
+
+/* El número '5' más grande y grueso */
+.event-info .display-5 {
+    font-weight: 800; 
+    letter-spacing: -2px; /* Número más compacto */
+}
+
+/* --- TARJETAS MODERNAS --- */
+.carousel-inner {
+    padding-top: 20px;
+    padding-bottom: 40px; /* Espacio para la sombra hover */
+}
+
+.card-villano {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    margin: 0 auto;
+    max-width: 340px;
+    /* Sombra inicial suave */
+    box-shadow: 0 10px 25px rgba(106, 76, 147, 0.15); 
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
+}
+
+/* Efecto Hover en la tarjeta */
+.card-villano:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(106, 76, 147, 0.3);
+    background-color: #ffffff;
+}
+
+.card-img-top {
+    height: 240px;
+    object-fit: cover;
+    transition: filter 0.4s ease;
+    filter: sepia(30%) contrast(105%);
+}
+
+.card-villano:hover .card-img-top {
+    filter: sepia(0%) contrast(100%); /* Revela el color real al pasar el mouse */
+}
+
+.card-body {
+    padding: 30px 25px;
+    position: relative;
+}
+
+.card-title {
+    font-family: var(--font-story);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+/* Badge del rol mejorado */
+.role-badge {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 10px rgba(156, 127, 193, 0.4);
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.border-violet {
+    border-top: 2px solid var(--accent-color);
+    opacity: 0.2;
+    margin: 1.5rem 0;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.song-text {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.95rem;
+    background: #f8f5ff;
+    padding: 8px 15px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.song-text i {
+    color: var(--accent-dark);
+}
+
+/* --- CONTROLES CARRUSEL --- */
+.carousel-control-prev, .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-control-prev { left: 5px; }
+.carousel-control-next { right: 5px; }
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background: white;
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: 100%;
+    color: darkviolet;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 40px 20px;
+    background: linear-gradient(to top, rgba(255,255,255,0.5), transparent);
+    margin-top: 40px;
+}
+
+.logo-footer {
+    max-width: 80px;
+    transition: transform 0.5s ease;
+}
+
+.logo-footer:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.social-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 1.5rem;
+    margin: 0 8px;
+    color: var(--accent-dark);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.social-btn:hover { 
+    background-color: var(--accent-dark);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(106, 76, 147, 0.3);
+}
+
+/* Responsividad para móviles pequeños */
+@media (max-width: 576px) {
+    .title-serif { font-size: 2.5rem; }
+    .hero-section { min-height: 380px; }
+    .deco-img { transform: scale(0.8); } /* Hacemos las decos un poco más chicas */
+}
